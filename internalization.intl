@@ -1,6 +1,0 @@
-/*n * Fil med oversettbare strenger generert av Glade.
- * Legg till denne filen i ditt prosjekts POTFILES.in.
- * IKKE kompiler den som en del av applikasjonen din.
- */
-
-gchar *s = N_("window1");
