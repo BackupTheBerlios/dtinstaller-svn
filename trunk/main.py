@@ -7,12 +7,18 @@ import pygtk
 import gtk
 import gtk.glade
 import gobject
-
 import libs
+
+libs.fullPath()
+
 import widgets
 import variables
 import colours
 import tabs
+
+## basic definitions
+
+debug = 0
 
 ## definitions and classes
 def checkXorg(versionX="nover"):
@@ -22,51 +28,51 @@ def checkXorg(versionX="nover"):
 	else:
 		print "DEBUG: You have specified to not check for a specific Xorg version."
 		return 1
-
-class checkArgs:
-	if sys.argv[1]=="--help":
-		print "usage: dtinstaller [--help] [--debug|--failsafe|--clui]"
-
-	def checkDebug(self): 
-			if sys.argv[1]=="--debug":
-				debug = 1
-				debugChecked = 1
-				checkFailsafe()
-				if failsafeChecked == 1 and cluiChecked == 0:
-					checkClui()
-				elif failsafeChecked == 0:
+if 1 in sys.argv:
+	class checkArgs:
+		if sys.argv[1]=="--help":
+			print "usage: dtinstaller [--help] [--debug|--failsafe|--clui]"
+	
+		def checkDebug(self): 
+				if sys.argv[1]=="--debug":
+					debug = 1
+					debugChecked = 1
 					checkFailsafe()
-					if cluiChecked == 0:
+					if failsafeChecked == 1 and cluiChecked == 0:
 						checkClui()
-
-	def checkFailsafe(self):
-			if sys.argv[1]=="--failsafe":
-				failsafe = 1
-				failsafeChecked = 1
-				if debugChecked == 1 and cluiChecked == 0:
-					checkClui()
-				elif debugChecked == 0:
-					checkDebug()
-					if cluiChecked == 0:
-						checkClui()
-
-	def checkClui(self):
-			if sys.argv[1]=="--clui":
-				failsafe = 1
-				failsafeChecked = 1
-				if debugChecked == 1 and failsafeChecked == 0:
-					checkFailsafe()
-				elif debugChecked == 0:
-					checkDebug()
-					if failsafeChecked == 0:
+					elif failsafeChecked == 0:
 						checkFailsafe()
-	def checkArgsStart(self):
-			self.checkDebug()
-
+						if cluiChecked == 0:
+							checkClui()
+	
+		def checkFailsafe(self):
+				if sys.argv[1]=="--failsafe":
+					failsafe = 1
+					failsafeChecked = 1
+					if debugChecked == 1 and cluiChecked == 0:
+						checkClui()
+					elif debugChecked == 0:
+						checkDebug()
+						if cluiChecked == 0:
+							checkClui()
+	
+		def checkClui(self):
+				if sys.argv[1]=="--clui":
+					failsafe = 1
+					failsafeChecked = 1
+					if debugChecked == 1 and failsafeChecked == 0:
+						checkFailsafe()
+					elif debugChecked == 0:
+						checkDebug()
+						if failsafeChecked == 0:
+							checkFailsafe()
+		def checkArgsStart(self):
+				self.checkDebug()
+	
 ## end of definitions
 ## checks and pre-variables
-
-checkArgs()
+if 1 in sys.argv:
+	checkArgs.checkArgsStart()
 
 ## end checks and pre-variables
 ## main body
