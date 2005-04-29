@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 
-class Screen:
+class SummaryScreen:
 
 	"""Last screen before installation - summary of what you've chosen
 	in the install.
@@ -11,3 +11,4 @@ class Screen:
 	## Variables	
 
 	def listView(self):
+		

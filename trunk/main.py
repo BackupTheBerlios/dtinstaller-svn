@@ -8,22 +8,13 @@ import gtk
 import gtk.glade
 import gobject
 
-rootdir = os.getcwd()
-sys.path.append(rootdir + '/src')
-sys.path.append(rootdir + '/src/art')
-
 import libs
 import widgets
 import variables
 import colours
 import tabs
 
-## variables
-
-debug = 1
-
-## end variables
-## definitions
+## definitions and classes
 def checkXorg(versionX="nover"):
 	if versionX != "nover":
 		print "TODO: Check for Xorg version if not \"nover\""
@@ -32,7 +23,52 @@ def checkXorg(versionX="nover"):
 		print "DEBUG: You have specified to not check for a specific Xorg version."
 		return 1
 
+class checkArgs:
+	if sys.argv[1]=="--help":
+		print "usage: dtinstaller [--help] [--debug|--failsafe|--clui]"
+
+	def checkDebug(self): 
+			if sys.argv[1]=="--debug":
+				debug = 1
+				debugChecked = 1
+				checkFailsafe()
+				if failsafeChecked == 1 and cluiChecked == 0:
+					checkClui()
+				elif failsafeChecked == 0:
+					checkFailsafe()
+					if cluiChecked == 0:
+						checkClui()
+
+	def checkFailsafe(self):
+			if sys.argv[1]=="--failsafe":
+				failsafe = 1
+				failsafeChecked = 1
+				if debugChecked == 1 and cluiChecked == 0:
+					checkClui()
+				elif debugChecked == 0:
+					checkDebug()
+					if cluiChecked == 0:
+						checkClui()
+
+	def checkClui(self):
+			if sys.argv[1]=="--clui":
+				failsafe = 1
+				failsafeChecked = 1
+				if debugChecked == 1 and failsafeChecked == 0:
+					checkFailsafe()
+				elif debugChecked == 0:
+					checkDebug()
+					if failsafeChecked == 0:
+						checkFailsafe()
+	def checkArgsStart(self):
+			self.checkDebug()
+
 ## end of definitions
+## checks and pre-variables
+
+checkArgs()
+
+## end checks and pre-variables
 ## main body
 
 xorg = checkXorg("nover")

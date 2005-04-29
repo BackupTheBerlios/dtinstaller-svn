@@ -8,10 +8,6 @@ import gtk
 import gtk.glade
 import gobject
 
-rootdir = os.getcwd()
-sys.path.append('..')
-sys.path.append(rootdir + 'art')
-
 import libs
 import widgets
 import variables
@@ -28,3 +24,10 @@ def ChangeColorSide():
 
 def quitProg(q, w):
 	gtk.main_quit()
+
+def fullPath():
+	rootdir = os.getcwd()
+	paths = ["/src", "/src/art", "/modules"]
+	
+	for path in paths:
+		sys.path.append(rootdir + path)
