@@ -20,7 +20,7 @@ import tabs
 
 ## variables
 
-failsafe = 1
+debug = 1
 
 ## end variables
 ## definitions
@@ -38,7 +38,7 @@ def checkXorg(versionX="nover"):
 xorg = checkXorg("nover")
 
 if xorg == 1:
-	if failsafe == 1:
+	if debug == 1:
 		print "xorg is running."
 		xval = 1
 	else:
