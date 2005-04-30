@@ -8,7 +8,8 @@
 $hd = $ARGV[1] ;
 $hd=~s/-//gi;
 $fs = $ARGV[2] ;
- `parted -s $hd rm 0` ;
+if($fs eq "") { $fs = "reiserfs" };
+ `parted -s $hd rm 8` ;
  `parted -s $hd rm 1` ;
  `parted -s $hd rm 2` ;
  `parted -s $hd rm 3` ;
