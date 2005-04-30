@@ -23,7 +23,7 @@ if($ARGV[0] eq "-layout1") {
   $swaps = ($end + 1);
   $swape = ($mb - 10);
   `parted -s $hd mkpart primary 0 $end` ;
-  `mkfs.reiserfs -q $hd'1'`;
+  `mkfs.$fs -q $hd'1'`;
   `parted -s $hd mkpartfs primary linux-swap $swaps $swape`;
    print("Hah! $hd has been partitioned!\n");
 }elsif($ARGV[0] eq "-layout2"){
@@ -36,13 +36,13 @@ if($ARGV[0] eq "-layout1") {
   $usrpartend = (.30 * $mb + $homepartend);
   $swappartbeg = ($usrpartend +1);
   $swappartend = (.05 * $mb + $usrpartend);
-  `parted -s $hd mkpart primary reiser 0 $rootpartend` ;
-  `parted -s $hd mkpart primary reiser $homepartbeg $homepartend` ;
-  `parted -s $hd mkpart primary reiser $usrpartbeg $usrpartend` ;
+  `parted -s $hd mkpart primary 0 $rootpartend` ;
+  `parted -s $hd mkpart primary $homepartbeg $homepartend` ;
+  `parted -s $hd mkpart primary $usrpartbeg $usrpartend` ;
   `parted -s $hd mkpartfs primary linux-swap $swappartbeg $swappartend` ;
-  `mkfs.reiserfs -q $hd'1'`;
-  `mkfs.reiserfs -q $hd'2'`;
-  `mkfs.reiserfs -q $hd'3'`;
+  `mkfs.$fs -q $hd'1'`;
+  `mkfs.$fs -q $hd'2'`;
+  `mkfs.$fs -q $hd'3'`;
    print("Hah! $hd has been partition!\n");
 } else {
  print("Layout not available\n");
