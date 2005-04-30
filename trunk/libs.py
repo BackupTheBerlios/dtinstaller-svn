@@ -8,8 +8,9 @@ import gtk
 import gtk.glade
 import gobject
 
+rootdir = os.getcwd()
+
 def fullPath():
-	rootdir = os.getcwd()
 	paths = ["/src", "/src/art", "/modules"]
 	
 	for path in paths:

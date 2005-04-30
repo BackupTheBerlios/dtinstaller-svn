@@ -4,7 +4,7 @@ class CallEm:
 
 	"""All installer modules are loaded through these functions.
 
-	@authors: Exigo Linux Team 4 <trygvebw@gmail.com
+	@authors: Exigo Linux Team 4 <trygvebw@gmail.com>
 	@license: BSDL"""
 
 	def callModule(self, moduleName, function):

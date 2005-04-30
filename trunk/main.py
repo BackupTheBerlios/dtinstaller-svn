@@ -25,7 +25,7 @@ def checkXorg(versionX="nover"):
 	if versionX != "nover":
 		print "TODO: Check for Xorg version if not \"nover\""
 		return 0
-	else:
+	elif debug == 1:
 		print "DEBUG: You have specified to not check for a specific Xorg version."
 		return 1
 if 1 in sys.argv:

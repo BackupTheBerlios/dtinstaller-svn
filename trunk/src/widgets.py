@@ -7,12 +7,10 @@ import pygtk
 import gtk
 import gtk.glade
 import gobject
-
-rootdir = os.getcwd()
-sys.path.append('..')
-sys.path.append(rootdir + 'art')
-
 import libs
+
+libs.fullPath()
+
 import variables
 import colours
 
@@ -20,7 +18,7 @@ import colours
 #	widgets = xml.get_widget('colorbox')
 
 def createWindow(window="dtinstaller"):
-	xml = gtk.glade.XML(rootdir + '/src/gui/gui.glade', window)
+	xml = gtk.glade.XML(libs.rootdir + '/src/gui/gui.glade', window)
 	colorbox = xml.get_widget('colorbox')
 	widgets = xml.get_widget_prefix('')
 
