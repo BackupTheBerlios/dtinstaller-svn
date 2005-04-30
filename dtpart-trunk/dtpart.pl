@@ -8,7 +8,7 @@
 $hd = $ARGV[1] ;
 $hd=~s/-//gi;
 $fs = $ARGV[2] ;
-if($ARGV[0] eq "-layout1") {
+if($ARGV[0] eq "--layout1") {
  $blocks = `sfdisk -s $hd` ;
  $mb = ($blocks / 1024);
  $end = ($mb - 256);
