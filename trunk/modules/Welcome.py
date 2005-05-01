@@ -12,4 +12,4 @@ class WelcomeScreen:
 
 	def welcomeTab(self):
 		notebook1 = gtk.Notebook
-		notebook1.switch-page(1)
+		notebook1.set_page(1)

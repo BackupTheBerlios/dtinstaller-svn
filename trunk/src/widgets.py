@@ -12,23 +12,31 @@ import libs
 libs.fullPath()
 
 import variables
-import colours
+from colours import colours
 
 #def importObjects():
 #	widgets = xml.get_widget('colorbox')
 
 def createWindow(window="dtinstaller"):
 	xml = gtk.glade.XML(libs.rootdir + '/src/gui/gui.glade', window)
-	colorbox = xml.get_widget('colorbox')
+	colourbox = xml.get_widget('colorbox')
+	notebook = xml.get_widget('notebook')
+	colourtopbox = xml.get_widget('coloreventbox')
+	quitbt = xml.get_widget('quitbt')
 	widgets = xml.get_widget_prefix('')
 
+	notebook.set_show_tabs(0)
 	e = gtk.Entry()
 	map = e.get_colormap()
-	colour = map.alloc_color("#FF9999") # light red
-	gtk.EventBox.modify_bg(colorbox, "GTK_STATE_NORMAL", colour)
+	colourRightBar = map.alloc_color(colours.rightbar) # blue
+	colourTopBar = map.alloc_color(colours.topbar) # dark blue
+	gtk.EventBox.modify_bg(colourbox, "GTK_STATE_NORMAL", colourRightBar)
+	gtk.EventBox.modify_bg(colourtopbox, "GTK_STATE_NORMAL", colourTopBar)
+	
 	
 	signal_handlers = {
-		'on_' + window + '_delete_event': libs.quitProg
+		'on_' + window + '_delete_event': libs.quitProg,
+		'on_quitbt_clicked': libs.quitProgWarning
 		}
 
 	xml.signal_autoconnect(signal_handlers)

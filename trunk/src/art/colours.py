@@ -22,3 +22,6 @@ rootdir = os.getcwd()
 ## This file is for defining the colours used in the installer. A color scheme editor in the 
 ## installer is planned.
 
+class colours:
+	rightbar = "#aeaeff"
+	topbar = "#000046"

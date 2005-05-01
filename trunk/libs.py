@@ -33,4 +33,9 @@ def ChangeColorSide():
 	gtk.EventBox.modify_bg(colorbox, "GTK_STATE_NORMAL", colour)
 
 def quitProg(q, w):
+	print "ERROR: Unexpected Quit Signal!"
+	gtk.main_quit()
+
+def quitProgWarning(message):
+	print "TODO: Quit Warning!"
 	gtk.main_quit()
