@@ -30,21 +30,26 @@ if($ARGV[0] eq "-layout1") {
 }elsif($ARGV[0] eq "-layout2"){
   $blocks = `sfdisk -s $hd` ;
   $mb = ($blocks / 1024);
-  $rootpartend = (.15 * $mb);
-  $homepartbeg = ($rootpartend + 1);
-  $homepartend = (.50 * $mb + $rootpartend);
+  $rootpartend = (.10 * $mb);
+  $swappartbeg = ($rootpartend +1);
+  $swappartend = (.05 * $mb + $rootpartend);
+  $bootpartbeg = ($swappartend +1);
+  $bootpartend = (.05 * $mb + $swappartend);
+  $homepartbeg = ($bootpartend + 1);
+  $homepartend = (.50 * $mb + $bootpartend);
   $usrpartbeg = ($homepartend + 1);
   $usrpartend = (.30 * $mb + $homepartend);
-  $swappartbeg = ($usrpartend +1);
-  $swappartend = (.05 * $mb + $usrpartend);
   `parted -s $hd mkpart primary 0 $rootpartend` ;
-  `parted -s $hd mkpart primary $homepartbeg $homepartend` ;
-  `parted -s $hd mkpart primary $usrpartbeg $usrpartend` ;
   `parted -s $hd mkpartfs primary linux-swap $swappartbeg $swappartend` ;
+  `parted -s $hd mkpart extended $bootpartbeg $usrpartend` ;
+  `parted -s $hd mkpart logical $bootpartbeg $bootpartend` ;
+  `parted -s $hd mkpart logical $homepartbeg $homepartend` ;
+  `parted -s $hd mkpart logical $usrpartbeg $usrpartend` ;
   `mkfs.$fs -q $hd'1'`;
-  `mkfs.$fs -q $hd'2'`;
-  `mkfs.$fs -q $hd'3'`;
-   print("Hah! $hd has been partition!\n");
+  `mkfs.$fs -q $hd'5'`;
+  `mkfs.$fs -q $hd'6'`;
+  `mkfs.$fs -q $hd'7'`;
+   print("Hah! $hd has been partitioned!\n");
 } else {
  print("Layout not available\n");
- }
+}
