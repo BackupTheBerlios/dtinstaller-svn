@@ -71,7 +71,7 @@ if 1 in sys.argv:
 
 def Call():
 	import CallModules
-	CallModules.CallEm.callModule(1, "Welcome")
+	CallModules.CallEm.callModule("Welcome")
 	
 ## end of definitions
 ## checks and pre-variables

@@ -18,7 +18,7 @@ class CallEm:
 	@license: BSDL"""
 
 	@classmethod
-	def callModule(self, module):
+	def callModule(module, x):
 		
 		"""This function calls a module. moduleToCall is the module to call. module can
 		be Welcome, ExpLang, Part, Package, BootLoader, Summary or Final."""
