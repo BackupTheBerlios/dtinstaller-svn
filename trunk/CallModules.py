@@ -2,9 +2,13 @@
 
 import sys
 import os
+import time
 import pygtk
 import gtk
 import gtk.glade
+import libs
+
+libs.fullPath()
 
 class CallEm:
 
@@ -19,5 +23,5 @@ class CallEm:
 		be Welcome, ExpLang, Part, Package, BootLoader, Summary or Final."""
 		moduleToCall = module
 		if moduleToCall == "Welcome":
-			from modules/Welcome import WelcomeScreen
+			from Welcome import WelcomeScreen
 			WelcomeScreen.welcomeTab(WelcomeScreen)

@@ -68,6 +68,10 @@ if 1 in sys.argv:
 							checkFailsafe()
 		def checkArgsStart(self):
 				self.checkDebug()
+
+def Call():
+	import CallModules
+	CallModules.CallEm.callModule(1, "Welcome")
 	
 ## end of definitions
 ## checks and pre-variables
@@ -97,4 +101,5 @@ widgets.createWindow("dtinstaller")
 #	window1.destroy()
 #	gtk.main_quit()
 
+Call()
 gtk.main()
