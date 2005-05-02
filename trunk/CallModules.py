@@ -17,6 +17,7 @@ class CallEm:
 	@authors: Exigo Linux Team 4 <trygvebw@gmail.com>
 	@license: BSDL"""
 
+	@classmethod
 	def callModule(self, module):
 		
 		"""This function calls a module. moduleToCall is the module to call. module can
