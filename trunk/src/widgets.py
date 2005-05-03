@@ -27,6 +27,7 @@ class WidgetActions:
 
 	xml = gtk.glade.XML(libs.rootdir + '/src/gui/gui.glade', "dtinstaller")
 	colourbox = xml.get_widget('colorbox')
+	quitmenubt = xml.get_widget('quit1')
 	notebook = xml.get_widget('notebook')
 	colourtopbox = xml.get_widget('coloreventbox')
 	quitbt = xml.get_widget('quitbt')
@@ -50,7 +51,24 @@ class WidgetActions:
 		signal_handlers = {
 			'on_' + window + '_delete_event': libs.quitProg,
 			'on_quitbt_clicked': libs.quitProgWarning,
-			'on_nextbt_clicked': CallEm.nextModule
+			'on_nextbt_clicked': CallEm.nextModule,
+			'on_quit1_activate': self.WindowTypes.createMessageWindow()
 			}
 	
 		self.xml.signal_autoconnect(signal_handlers)
+
+	class WindowTypes:
+
+		"""Templates of different window types."""
+
+		@classmethod
+		def createMessageWindow(message="", title="", backbtaction="", proceedbtaction=""):
+			
+			"""This function creates a message window."""
+			
+			f = gtk.Entry()
+			map2 = f.get_colormap()
+			xml2 = gtk.glade.XML(libs.rootdir + '/src/gui/gui.glade', "msgwindow")
+			msgwcolour = map2.alloc_color("#F0F0F0") # grey
+			msgwindowcolour = xml2.get_widget('msgwindow')
+			gtk.EventBox.modify_bg(msgwindowcolour, "GTK_STATE_NORMAL", msgwcolour)
