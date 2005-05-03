@@ -11,7 +11,7 @@ import libs
 
 libs.fullPath()
 
-import widgets
+from widgets import WidgetActions
 import variables
 import colours
 import tabs
@@ -94,12 +94,7 @@ else:
 	xval = 0
 
 #imports.variables.variablee()
-widgets.createWindow("dtinstaller")
-#libs.ChangeColorSide()
-
-#def quit(x, y):
-#	window1.destroy()
-#	gtk.main_quit()
+WidgetActions.createWindow("dtinstaller")
 
 Call()
 gtk.main()
