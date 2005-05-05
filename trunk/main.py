@@ -20,8 +20,67 @@ import tabs
 ## code without pre-defining them, please fix.
 
 debug = 0
+failsafeChecked = 0
+cluiChecked = 1
 
 ## definitions and classes
+
+class checkArgs:
+
+	"""Argument handling. This should be replaced by a more sane system soon!
+
+	@authors: trygvebw <trygvebw@gmail.com>
+	@license: BSDL"""
+
+	if len(sys.argv) > 1:
+		if sys.argv[1]=="--help":
+			print "usage: dtinstaller [--help] [--debug|--failsafe|--clui]"
+
+	@classmethod
+	def checkDebug(self): 
+			if len(sys.argv) > 1:
+				if sys.argv[1]=="--debug":
+					debug = 1
+					debugChecked = 1
+					print "debug mode was called!"
+					self.checkFailsafe()
+					if failsafeChecked == 1 and cluiChecked == 0:
+						self.checkClui()
+					elif failsafeChecked == 0:
+						self.checkFailsafe()
+						if cluiChecked == 0:
+							self.checkClui()
+
+	@classmethod
+	def checkFailsafe(self):
+			if len(sys.argv) > 1:
+				if sys.argv[1]=="--failsafe":
+					failsafe = 1
+					failsafeChecked = 1
+					print "failsafe mode was called!"
+					if debugChecked == 1 and cluiChecked == 0:
+						self.checkClui()
+					elif debugChecked == 0:
+						self.checkDebug()
+						if cluiChecked == 0:
+							self.checkClui()
+
+	@classmethod
+	def checkClui(self):
+			if len(sys.argv) > 1:
+				if sys.argv[1]=="--clui":
+					failsafe = 1
+					failsafeChecked = 1
+					print "clui mode was called!"
+					if debugChecked == 1 and failsafeChecked == 0:
+						self.checkFailsafe()
+					elif debugChecked == 0:
+						self.checkDebug()
+						if failsafeChecked == 0:
+							self.checkFailsafe()
+	@classmethod
+	def checkArgsStart(self):
+			self.checkDebug()
 
 ## w00t0h! the checkXorg function *finally* does something! :D
 
@@ -36,50 +95,6 @@ def checkXorg(versionX="nover"):
 	elif debug == 1 and versionX == "nover":
 		print "DEBUG: You have specified to not check for a specific Xorg version."
 		return 1
-
-class checkArgs:
-	if 1 in sys.argv:
-		if sys.argv[1]=="--help":
-			print "usage: dtinstaller [--help] [--debug|--failsafe|--clui]"
-
-	def checkDebug(self): 
-			if 1 in sys.argv:
-				if sys.argv[1]=="--debug":
-					debug = 1
-					debugChecked = 1
-					checkFailsafe()
-					if failsafeChecked == 1 and cluiChecked == 0:
-						checkClui()
-					elif failsafeChecked == 0:
-						checkFailsafe()
-						if cluiChecked == 0:
-							checkClui()
-
-	def checkFailsafe(self):
-			if 1 in sys.argv:
-				if sys.argv[1]=="--failsafe":
-					failsafe = 1
-					failsafeChecked = 1
-					if debugChecked == 1 and cluiChecked == 0:
-						checkClui()
-					elif debugChecked == 0:
-						checkDebug()
-						if cluiChecked == 0:
-							checkClui()
-
-	def checkClui(self):
-			if 1 in sys.argv:
-				if sys.argv[1]=="--clui":
-					failsafe = 1
-					failsafeChecked = 1
-					if debugChecked == 1 and failsafeChecked == 0:
-						checkFailsafe()
-					elif debugChecked == 0:
-						checkDebug()
-						if failsafeChecked == 0:
-							checkFailsafe()
-	def checkArgsStart(self):
-			self.checkDebug()
 
 def callGUI():
 	from CallModules import CallEm
@@ -114,7 +129,8 @@ WidgetActions.createWindow("dtinstaller")
 
 ## "In the beginning the Universe was created. This has made a lot of people very angry and been widely regarded as a bad move." -Douglas Adams
 
-if 1 in sys.argv:
+if len(sys.argv) > 1:
 	checkArgs.checkArgsStart()
 else:
+	print "standard gui mode was called!"
 	callGUI()
