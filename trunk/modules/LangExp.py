@@ -2,8 +2,7 @@
 
 class WelcomeScreen:
 
-	"""Last screen before installation - summary of what you've chosen
-	in the install.
+	"""On this screen the user selects language and experience level.
 
 	@authors: trygvebw <trygvebw@gmail.com>
 	@license: BSDL"""

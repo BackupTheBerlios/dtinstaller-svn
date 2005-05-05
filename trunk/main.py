@@ -20,6 +20,8 @@ import tabs
 ## code without pre-defining them, please fix.
 
 debug = 0
+failsafe = 0
+clui = 0
 failsafeChecked = 0
 cluiChecked = 1
 
@@ -69,8 +71,8 @@ class checkArgs:
 	def checkClui(self):
 			if len(sys.argv) > 1:
 				if sys.argv[1]=="--clui":
-					failsafe = 1
-					failsafeChecked = 1
+					clui = 1
+					cluiChecked = 1
 					print "clui mode was called!"
 					if debugChecked == 1 and failsafeChecked == 0:
 						self.checkFailsafe()
@@ -102,6 +104,9 @@ def callGUI():
 #	Call()
 	gtk.main()
 
+def callCLUI():
+	print "TODO: command line environment!"
+
 #def Call():
 #	import CallModules
 #	CallModules.CallEm.callModule("Welcome")
@@ -131,6 +136,12 @@ WidgetActions.createWindow("dtinstaller")
 
 if len(sys.argv) > 1:
 	checkArgs.checkArgsStart()
+	if debug == 1:
+		callGUI()
+	if failsafe == 1:
+		callGUI()
+	if clui == 1:
+		callCLUI()
 else:
 	print "standard gui mode was called!"
 	callGUI()

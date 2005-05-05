@@ -467,6 +467,7 @@
 				      <child>
 					<widget class="GtkLabel" id="label44">
 					  <property name="width_request">329</property>
+					  <property name="height_request">45</property>
 					  <property name="visible">True</property>
 					  <property name="label" translatable="yes">&lt;span size=&quot;x-large&quot;&gt;&lt;b&gt;Select Language&lt;/b&gt;&lt;/span&gt;</property>
 					  <property name="use_underline">False</property>
@@ -540,7 +541,7 @@
 
 					  <child>
 					    <widget class="GtkScrolledWindow" id="scrolledwindow1">
-					      <property name="border_width">11</property>
+					      <property name="border_width">15</property>
 					      <property name="width_request">208</property>
 					      <property name="height_request">156</property>
 					      <property name="visible">True</property>
@@ -573,6 +574,7 @@
 
 					  <child>
 					    <widget class="GtkEventBox" id="eventbox4">
+					      <property name="width_request">135</property>
 					      <property name="visible">True</property>
 					      <property name="visible_window">True</property>
 					      <property name="above_child">False</property>
@@ -635,6 +637,7 @@
 				  <child>
 				    <widget class="GtkLabel" id="label45">
 				      <property name="width_request">403</property>
+				      <property name="height_request">45</property>
 				      <property name="visible">True</property>
 				      <property name="label" translatable="yes">&lt;span size=&quot;x-large&quot;&gt;&lt;b&gt;Select your Linux experience level&lt;/b&gt;&lt;/span&gt;</property>
 				      <property name="use_underline">False</property>
@@ -694,8 +697,8 @@
 
 				  <child>
 				    <widget class="GtkScrolledWindow" id="scrolledwindow2">
-				      <property name="border_width">11</property>
-				      <property name="width_request">208</property>
+				      <property name="border_width">15</property>
+				      <property name="width_request">180</property>
 				      <property name="height_request">156</property>
 				      <property name="visible">True</property>
 				      <property name="can_focus">True</property>
@@ -727,6 +730,7 @@
 
 				  <child>
 				    <widget class="GtkEventBox" id="eventbox6">
+				      <property name="width_request">135</property>
 				      <property name="visible">True</property>
 				      <property name="visible_window">True</property>
 				      <property name="above_child">False</property>
