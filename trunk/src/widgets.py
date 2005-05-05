@@ -18,6 +18,8 @@ from colours import colours
 #def importObjects():
 #	widgets = xml.get_widget('colorbox')
 
+## class: we do different things with widgets.
+
 class WidgetActions:
 
 	"""Class for general widget/window actions.
@@ -52,10 +54,12 @@ class WidgetActions:
 			'on_' + window + '_delete_event': libs.quitProg,
 			'on_quitbt_clicked': libs.quitProgWarning,
 			'on_nextbt_clicked': CallEm.nextModule,
-			'on_quit1_activate': self.WindowTypes.createMessageWindow()
+			'on_quit1_activate': self.WindowTypes.createMessageWindow
 			}
 	
 		self.xml.signal_autoconnect(signal_handlers)
+
+	## subclass: templates of different window types
 
 	class WindowTypes:
 

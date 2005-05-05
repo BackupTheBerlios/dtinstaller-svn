@@ -16,24 +16,34 @@ import variables
 import colours
 import tabs
 
-## basic definitions
+## basic definitions. most of these are deprecated, if you find another way of getting working
+## code without pre-defining them, please fix.
 
 debug = 0
 
 ## definitions and classes
+
+## w00t0h! the checkXorg function *finally* does something! :D
+
 def checkXorg(versionX="nover"):
 	if versionX != "nover":
-		print "TODO: Check for Xorg version if not \"nover\""
-		return 0
-	elif debug == 1:
+		def checkXorgBase():
+			if os.getenv("DISPLAY") == None:
+				return 0
+			else:
+				return 1
+		x11exist = "nullthingies" ## checkthingies
+	elif debug == 1 and versionX == "nover":
 		print "DEBUG: You have specified to not check for a specific Xorg version."
 		return 1
-if 1 in sys.argv:
-	class checkArgs:
+
+class checkArgs:
+	if 1 in sys.argv:
 		if sys.argv[1]=="--help":
 			print "usage: dtinstaller [--help] [--debug|--failsafe|--clui]"
-	
-		def checkDebug(self): 
+
+	def checkDebug(self): 
+			if 1 in sys.argv:
 				if sys.argv[1]=="--debug":
 					debug = 1
 					debugChecked = 1
@@ -44,8 +54,9 @@ if 1 in sys.argv:
 						checkFailsafe()
 						if cluiChecked == 0:
 							checkClui()
-	
-		def checkFailsafe(self):
+
+	def checkFailsafe(self):
+			if 1 in sys.argv:
 				if sys.argv[1]=="--failsafe":
 					failsafe = 1
 					failsafeChecked = 1
@@ -55,8 +66,9 @@ if 1 in sys.argv:
 						checkDebug()
 						if cluiChecked == 0:
 							checkClui()
-	
-		def checkClui(self):
+
+	def checkClui(self):
+			if 1 in sys.argv:
 				if sys.argv[1]=="--clui":
 					failsafe = 1
 					failsafeChecked = 1
@@ -66,20 +78,25 @@ if 1 in sys.argv:
 						checkDebug()
 						if failsafeChecked == 0:
 							checkFailsafe()
-		def checkArgsStart(self):
-				self.checkDebug()
+	def checkArgsStart(self):
+			self.checkDebug()
 
-def Call():
-	import CallModules
-	CallModules.CallEm.callModule("Welcome")
+def callGUI():
+	from CallModules import CallEm
+	CallEm.nextModule("fdfd")
+#	Call()
+	gtk.main()
+
+#def Call():
+#	import CallModules
+#	CallModules.CallEm.callModule("Welcome")
 	
 ## end of definitions
 ## checks and pre-variables
-if 1 in sys.argv:
-	checkArgs.checkArgsStart()
 
 ## end checks and pre-variables
-## main body
+## main body - this'll check if Xorg exists. it's only printing some fake
+## messages at the moment.
 
 xorg = checkXorg("nover")
 
@@ -93,8 +110,11 @@ else:
 	print "xorg is not running."
 	xval = 0
 
-#imports.variables.variablee()
 WidgetActions.createWindow("dtinstaller")
 
-Call()
-gtk.main()
+## "In the beginning the Universe was created. This has made a lot of people very angry and been widely regarded as a bad move." -Douglas Adams
+
+if 1 in sys.argv:
+	checkArgs.checkArgsStart()
+else:
+	callGUI()
