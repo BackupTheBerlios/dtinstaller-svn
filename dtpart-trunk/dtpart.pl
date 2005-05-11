@@ -26,7 +26,7 @@ if($remove != 1) {
   `parted -s $hd rm 6`;
   `parted -s $hd rm 7`;
   `parted -s $hd rm 8`;}
- Layout1 creates a big / partition and a 256mb swap partition.
+# Layout1 creates a big / partition and a 256mb swap partition.
 if($ARGV[0] eq "-layout1") {
    $blocks = `sfdisk -s $hd` ;
    $mb = ($blocks / 1024) ;
