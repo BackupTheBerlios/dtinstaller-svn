@@ -1,4 +1,4 @@
-# Copyright (c) 2000 Trygve B. Wiig <trygvebw@gmail.com>
+# Copyright (c) 2005 Trygve B. Wiig <trygvebw@gmail.com>
 # All rights reserved.
 
 # Redistribution and use in source and binary forms, with or without
@@ -36,6 +36,10 @@ import libs
 
 libs.fullPath()
 
+import importModules
+
+importModules.importModules()
+
 class CallEm:
 
 	"""All installer modules are loaded through these functions.
@@ -55,20 +59,59 @@ class CallEm:
 			module = 1
 
 	@classmethod
+	def nextModuleBorked(x):
+		"""Only for use in main.py."""
+		from widgets import WidgetActions
+		notebook = WidgetActions.xml.get_widget('notebook')
+		notebook.next_page()
+		print "nextModuleBorked() has been called!"
+
+	@classmethod
 	def nextModule(x, y):
 		"""This function cycles to the next module without checking anything. It shouldn't
 		normally be used. Please use callModule(). In the first alpha/beta versions it
 		can be used, since we haven't got callModule() working correctly yet."""
 
 		from widgets import WidgetActions
-		def goTo():
-			if stage: ## This if-sequense is broken, too many indents.
-				notebook.set_page(stage)
-				if stage == 0:
-					if explevel:
-						if explevel == "Beginner":
-							notebook.set_page(begstage[stage])
-			else: 
-				stage = 0
+		try: # prøve om explevel er definert
+
+			if explevel == "Beginner": # hvis explevel er begynner
+				import stages # vi importer stages.py
+				notebook.set_page(begstage[stage]) # vi setter den aktive siden 
+				# til det "stage" er. "stage" er det steget vi er på.
+				stageFunction = begstage[stage] # vi lager en funksjon
+				stageFunction() # vi kaller startfunksjonen til den.
+				stage = stage + 1 # vi gjør stage en høyere
+
+			if explevel == "Advanced": # hvis explevel er begynner
+				import stages # vi importer stages.py
+				notebook.set_page(begstage[stage]) # vi setter den aktive siden 
+				# til det "stage" er. "stage" er det steget vi er på.
+				stageFunction = begstage[stage] # vi lager en funksjon
+				stageFunction() # vi kaller startfunksjonen til den.
+				stage = stage + 1 # vi gjør stage en høyere
+
+			if explevel == "Expert": # hvis explevel er begynner
+				import stages # vi importer stages.py
+				notebook.set_page(begstage[stage]) # vi setter den aktive siden 
+				# til det "stage" er. "stage" er det steget vi er på.
+				stageFunction = begstage[stage] # vi lager en funksjon
+				stageFunction() # vi kaller startfunksjonen til den.
+				stage = stage + 1 # vi gjør stage en høyere
+
+		except: # hvis explevel ikke er definert
+			notebook = WidgetActions.xml.get_widget('notebook') # importer
+			notebook.next_page() # vi går til neste side
+
+#		def goTo():
+#			if stage: ## This if-sequense is broken, too many indents.
+#				notebook.set_page(stage)
+#				if stage == 0:
+#					if explevel:
+#						if explevel == "Beginner":
+#							notebook.set_page(begstage[stage])
+#			else: 
+#				stage = 0
+
 #		notebook = WidgetActions.xml.get_widget('notebook')
 #		notebook.next_page()

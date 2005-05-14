@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 
-# Copyright (c) 2000 Trygve B. Wiig <trygvebw@gmail.com>
+# Copyright (c) 2005 Trygve B. Wiig <trygvebw@gmail.com>
 # All rights reserved.
 
 # Redistribution and use in source and binary forms, with or without
@@ -29,10 +29,6 @@
 import sys
 import os
 import time
-import pygtk
-import gtk
-import gtk.glade
-import gobject
 import libs
 
 libs.fullPath()
@@ -59,9 +55,12 @@ class checkArgs:
 	@authors: trygvebw <trygvebw@gmail.com>
 	@license: BSDL"""
 
-	if len(sys.argv) > 1:
-		if sys.argv[1]=="--help":
-			print "usage: dtinstaller [--help] [--debug|--failsafe|--clui]"
+	@classmethod
+	def checkHelp(self):
+		if len(sys.argv) > 1:
+			if sys.argv[1]=="--help":
+				print "usage: dtinstaller [--help] [--debug|--failsafe|--clui]"
+		self.checkDebug()
 
 	@classmethod
 	def checkDebug(self): 
@@ -70,13 +69,7 @@ class checkArgs:
 					debug = 1
 					debugChecked = 1
 					print "debug mode was called!"
-					self.checkFailsafe()
-					if failsafeChecked == 1 and cluiChecked == 0:
-						self.checkClui()
-					elif failsafeChecked == 0:
-						self.checkFailsafe()
-						if cluiChecked == 0:
-							self.checkClui()
+				self.checkFailsafe()
 
 	@classmethod
 	def checkFailsafe(self):
@@ -85,12 +78,7 @@ class checkArgs:
 					failsafe = 1
 					failsafeChecked = 1
 					print "failsafe mode was called!"
-					if debugChecked == 1 and cluiChecked == 0:
-						self.checkClui()
-					elif debugChecked == 0:
-						self.checkDebug()
-						if cluiChecked == 0:
-							self.checkClui()
+				self.checkClui()
 
 	@classmethod
 	def checkClui(self):
@@ -99,33 +87,34 @@ class checkArgs:
 					clui = 1
 					cluiChecked = 1
 					print "clui mode was called!"
-					if debugChecked == 1 and failsafeChecked == 0:
-						self.checkFailsafe()
-					elif debugChecked == 0:
-						self.checkDebug()
-						if failsafeChecked == 0:
-							self.checkFailsafe()
 	@classmethod
 	def checkArgsStart(self):
-			self.checkDebug()
+			self.checkHelp()
 
 ## w00t0h! the checkXorg function *finally* does something! :D
 
-def checkXorg(versionX="nover"):
-	if versionX != "nover":
-		def checkXorgBase():
-			if os.getenv("DISPLAY") == None:
-				return 0
-			else:
-				return 1
-		x11exist = "nullthingies" ## checkthingies
-	elif debug == 1 and versionX == "nover":
-		print "DEBUG: You have specified to not check for a specific Xorg version."
-		return 1
+if os.getenv("DISPLAY") == None:
+	print "xorg = 0 has been defined"
+	xorg = 0
+else:
+	print "xorg = 1 has been defined"
+	xorg = 1
+
+## import GTK
+
+if xorg == 1:
+	import pygtk
+	import gtk
+	import gtk.glade
+	import gobject
+else:
+	print "DEBUG: no GTK loaded"
+
+## end
 
 def callGUI():
 	from CallModules import CallEm
-	CallEm.nextModule("fdfd")
+	CallEm.nextModuleBorked()
 #	Call()
 	gtk.main()
 
@@ -140,20 +129,36 @@ def callCLUI():
 ## checks and pre-variables
 
 ## end checks and pre-variables
-## main body - this'll check if Xorg exists. it's only printing some fake
-## messages at the moment.
+## main body - this'll check if Xorg exists.
 
-xorg = checkXorg("nover")
+def xorgCheck():
+	if xorg == 1:
+		if debug == 1:
+			print "xorg is running."
+			try:
+				if clui == 0:
+					clui = 0
+				elif clui == 1:
+					clui = 1
+				else:
+					print "nil"
+			except:
+				clui == 0
+		else:
+			try:
+				if clui == 0:
+					clui = 0
+				elif clui == 1:
+					clui = 1
+				else:
+					print "nil"
+			except:
+				print "nil"
+	elif xorg == 0:
+		print "xorg is not running."
+		clui = 0
 
-if xorg == 1:
-	if debug == 1:
-		print "xorg is running."
-		xval = 1
-	else:
-		xval = 1
-else:
-	print "xorg is not running."
-	xval = 0
+xorgCheck()
 
 WidgetActions.createWindow("dtinstaller")
 

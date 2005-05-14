@@ -1,4 +1,4 @@
-# Copyright (c) 2000 Trygve B. Wiig <trygvebw@gmail.com>
+# Copyright (c) 2005 Trygve B. Wiig <trygvebw@gmail.com>
 # All rights reserved.
 
 # Redistribution and use in source and binary forms, with or without
@@ -37,4 +37,4 @@ class SummaryScreen:
 	## Variables	
 
 	def listView(self):
-		
+		print "fake"

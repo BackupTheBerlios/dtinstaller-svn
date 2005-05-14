@@ -1,4 +1,4 @@
-# Copyright (c) 2000 Trygve B. Wiig <trygvebw@gmail.com>
+# Copyright (c) 2005 Trygve B. Wiig <trygvebw@gmail.com>
 # All rights reserved.
 
 # Redistribution and use in source and binary forms, with or without
@@ -41,6 +41,12 @@ def fullPath():
 	
 	for path in paths:
 		sys.path.append(rootdir + path)
+
+def fullPathSubdir():
+	paths = ["/src", "/src/art", "/modules"]
+	
+	for path in paths:
+		sys.path.append(rootdir + '/..' + path)
 
 fullPath()
 

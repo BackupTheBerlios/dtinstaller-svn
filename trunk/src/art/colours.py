@@ -23,5 +23,6 @@ rootdir = os.getcwd()
 ## installer is planned.
 
 class colours:
-	rightbar = "#aeaeff"
-	topbar = "#000046"
+	bottombox = "#f6f2ef"
+	black = "#c2bbb5"
+	sidebar = "#efece7"
