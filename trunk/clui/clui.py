@@ -29,26 +29,19 @@
 # OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 from time import sleep
-import curses
-stdscr = curses.initscr()
-curses.noecho()
-curses.cbreak()
-stdscr.keypad(1)
+import os
 
-#str
-#stdscr.addstr( "The staff of DistroTalk.net presents:"; curses.color_pair(1) )
-#stdscr.refresh()
-
+os.popen("dialog --title Hello --msgbox Hello 0 0")
 #sleep(1)
-str
-str " _____ _   _ __  _____   ___  "
-str "|__ __| | | |\ \/ / _ \ / __| "
-str "  | | | | | | \  /|| | |  \_  "
-str "  | | | |_| | /  \||_| |\__ | "
-str "  |_| |_____|/_/\_\___//____/ "
-str
-str "cli installer"
-str
+#str
+#str(" _____ _   _ __  _____   ___  ")
+#str("|__ __| | | |\ \/ / _ \ / __| ")
+#str "  | | | | | | \  /|| | |  \_  "
+#str "  | | | |_| | /  \||_| |\__ | "
+#str "  |_| |_____|/_/\_\___//____/ "
+#str
+#str "cli installer"
+#str
 
 #sleep(1)
 

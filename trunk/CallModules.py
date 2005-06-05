@@ -63,7 +63,7 @@ class CallEm:
 		"""Only for use in main.py."""
 		from widgets import WidgetActions
 		notebook = WidgetActions.xml.get_widget('notebook')
-		notebook.next_page()
+		#notebook.next_page()
 		print "nextModuleBorked() has been called!"
 
 	@classmethod
