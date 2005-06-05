@@ -29,38 +29,45 @@
 # OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 from time import sleep
+import curses
+stdscr = curses.initscr()
+curses.noecho()
+curses.cbreak()
+stdscr.keypad(1)
 
-print
-print "The staff of DistroTalk.net presents:"
-sleep(1)
-print
-print " _______  _____ ____  ___   " 
-print "| ____\ \/ /_ _/ ___|/ _ \  "
-print "|  _|  \  / | | |  _| | | | " 
-print "| |___ /  \ | | |_| | |_| | " 
-print "|_____/_/\_\___\____|\___/  "
-print
-print "cli installer"
-print
+#str
+#stdscr.addstr( "The staff of DistroTalk.net presents:"; curses.color_pair(1) )
+#stdscr.refresh()
 
-sleep(1)
+#sleep(1)
+str
+str " _____ _   _ __  _____   ___  "
+str "|__ __| | | |\ \/ / _ \ / __| "
+str "  | | | | | | \  /|| | |  \_  "
+str "  | | | |_| | /  \||_| |\__ | "
+str "  |_| |_____|/_/\_\___//____/ "
+str
+str "cli installer"
+str
 
-resp = raw_input("What keyboard lay-out do you want to use?\n>")
-print
-print "You are using %s keyboard lay-out\n" %resp
-lay = raw_input("Is this ok? (y/n)")
-if lay == "y":
-	print "\nThank you for using the Exigo cli installer.\n"
-	import sys
-	sys.exit()
-elif lay == "n":
-	print "This option is not available yet,\nThank you for testing the pre-alpha of dtcli\n"
-	import sys
-	sys.exit()
-else:	
-	print "This is not a valid option" 
-	import sys
-	sys.exit()
+#sleep(1)
+
+#resp = raw_input("What keyboard lay-out do you want to use?\n>")
+#print
+#print "You are using %s keyboard lay-out\n" %resp
+#lay = raw_input("Is this ok? (y/n)")
+#if lay == "y":
+#	print "\nThank you for using the Exigo cli installer.\n"
+#	import sys
+#	sys.exit()
+#elif lay == "n":
+#	print "This option is not available yet,\nThank you for testing the pre-alpha of dtcli\n"
+#	import sys
+#	sys.exit()
+#else:	
+#	print "This is not a valid option" 
+#	import sys
+#	sys.exit()
 
 # This is a small edit of the mock-up.
 # Complete it XD
