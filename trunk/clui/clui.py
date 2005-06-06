@@ -29,19 +29,32 @@
 # OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 from time import sleep
-import os
+import curses
+stdscr = curses.initscr()
+curses.noecho()
+curses.cbreak()
+stdscr.keypad(1)
 
-os.popen("dialog --title Hello --msgbox Hello 0 0")
+#str
+#stdscr.addstr( "The staff of DistroTalk.net presents:"; curses.color_pair(1) )
+#stdscr.refresh()
+
+def addText(y, text):
+	stdscr.addstr(0, y, text)
+
 #sleep(1)
-#str
-#str(" _____ _   _ __  _____   ___  ")
-#str("|__ __| | | |\ \/ / _ \ / __| ")
-#str "  | | | | | | \  /|| | |  \_  "
-#str "  | | | |_| | /  \||_| |\__ | "
-#str "  |_| |_____|/_/\_\___//____/ "
-#str
-#str "cli installer"
-#str
+addText(0, "")
+addText(1, " _____ _   _ __  _____   ___  ")
+addText(2, "|__ __| | | |\ \/ / _ \ / __| ")
+addText(3, "  | | | | | | \  /|| | |  \_  ")
+addText(4, "  | | | |_| | /  \||_| |\__ | ")
+addText(5, "  |_| |_____|/_/\_\___//____/ ")
+addText(6, "")
+addText(7, "cli installer")
+addText(8, "")
+#stdscr.refresh()
+
+curses.endwin()
 
 #sleep(1)
 
