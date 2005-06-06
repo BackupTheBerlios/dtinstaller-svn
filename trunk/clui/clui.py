@@ -39,41 +39,44 @@ stdscr.keypad(1)
 #stdscr.addstr( "The staff of DistroTalk.net presents:"; curses.color_pair(1) )
 #stdscr.refresh()
 
-def addText(y, text):
-	stdscr.addstr(0, y, text)
+def addText(text):
+	stdscr.addstr(text)
 
-#sleep(1)
-addText(0, "")
-addText(1, " _____ _   _ __  _____   ___  ")
-addText(2, "|__ __| | | |\ \/ / _ \ / __| ")
-addText(3, "  | | | | | | \  /|| | |  \_  ")
-addText(4, "  | | | |_| | /  \||_| |\__ | ")
-addText(5, "  |_| |_____|/_/\_\___//____/ ")
-addText(6, "")
-addText(7, "cli installer")
-addText(8, "")
-#stdscr.refresh()
+sleep(1)
+addText("\n")
+addText(" _____ _   _ __  _____   ___  \n")
+addText("|__ __| | | |\ \/ / _ \ / __| \n")
+addText("  | | | | | | \  /|| | |  \_  \n")
+addText("  | | | |_| | /  \||_| |\__ | \n")
+addText("  |_| |_____|/_/\_\___//____/ \n")
+addText("\n")
+stdscr.refresh()
+sleep(2)
+addText("cli installer\n")
+addText("\n")
+stdscr.refresh()
+sleep(5)
 
 curses.endwin()
 
 #sleep(1)
 
-#resp = raw_input("What keyboard lay-out do you want to use?\n>")
-#print
-#print "You are using %s keyboard lay-out\n" %resp
-#lay = raw_input("Is this ok? (y/n)")
-#if lay == "y":
-#	print "\nThank you for using the Exigo cli installer.\n"
-#	import sys
-#	sys.exit()
-#elif lay == "n":
-#	print "This option is not available yet,\nThank you for testing the pre-alpha of dtcli\n"
-#	import sys
-#	sys.exit()
-#else:	
-#	print "This is not a valid option" 
-#	import sys
-#	sys.exit()
+resp = raw_input("What keyboard lay-out do you want to use?\n>")
+print
+print "You are using %s keyboard lay-out\n" %resp
+lay = raw_input("Is this ok? (y/n)")
+if lay == "y":
+	print "\nThank you for using the Exigo cli installer.\n"
+	import sys
+	sys.exit()
+elif lay == "n":
+	print "This option is not available yet,\nThank you for testing the pre-alpha of dtinstaller! :)\n"
+	import sys
+	sys.exit()
+else:	
+	print "This is not a valid option" 
+	import sys
+	sys.exit()
 
 # This is a small edit of the mock-up.
 # Complete it XD
