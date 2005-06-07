@@ -37,7 +37,7 @@ import gobject
 rootdir = os.getcwd()
 
 def fullPath():
-	paths = ["/src", "/src/art", "/modules"]
+	paths = ["/src", "/src/art", "/modules", "/"]
 	
 	for path in paths:
 		sys.path.append(rootdir + path)
@@ -49,6 +49,8 @@ def fullPathSubdir():
 		sys.path.append(rootdir + '/..' + path)
 
 fullPath()
+
+from widgets import WidgetActions
 
 import libs
 import widgets

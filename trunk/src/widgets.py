@@ -94,7 +94,8 @@ class WidgetActions:
 			'on_' + window + '_delete_event': libs.quitProg,
 			'on_quitbt_clicked': libs.quitProgWarning,
 			'on_nextbt_clicked': CallEm.nextModule,
-			'on_quit_activate': libs.quitProgWarning
+			'on_BackBt_clicked': CallEm.prevModuleBorked,
+			'on_quit_activate': libs.quitProgWarning,
 			}
 	
 		self.xml.signal_autoconnect(signal_handlers)

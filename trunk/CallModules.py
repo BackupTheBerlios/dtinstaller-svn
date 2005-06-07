@@ -47,6 +47,7 @@ class CallEm:
 	@authors: trygvebw <trygvebw@gmail.com>
 	@license: BSDL"""
 
+	# Why should this be used? nextModuleBorked does the job nearly how we want...
 	@classmethod
 	def callModule(module="none", x="x"):
 		
@@ -63,15 +64,24 @@ class CallEm:
 		"""Only for use in main.py."""
 		from widgets import WidgetActions
 		notebook = WidgetActions.xml.get_widget('notebook')
-		#notebook.next_page()
+		notebook.next_page()
 		print "nextModuleBorked() has been called!"
 
+	@classmethod
+	def prevModuleBorked(x, y):
+		"""Only for use in main.py."""
+		from widgets import WidgetActions
+		notebook = WidgetActions.xml.get_widget('notebook')
+		notebook.prev_page()
+		print "prevModuleBorked() has been called!"
+
+	# Why should this be used? nextModuleBorked does the job nearly how we want...
 	@classmethod
 	def nextModule(x, y):
 		"""This function cycles to the next module without checking anything. It shouldn't
 		normally be used. Please use callModule(). In the first alpha/beta versions it
 		can be used, since we haven't got callModule() working correctly yet."""
-
+		print "nextModule() has been called"
 		from widgets import WidgetActions
 		try: # prøve om explevel er definert
 

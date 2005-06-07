@@ -114,7 +114,7 @@ else:
 
 def callGUI():
 	from CallModules import CallEm
-	CallEm.nextModuleBorked()
+	#CallEm.nextModuleBorked()
 #	Call()
 	gtk.main()
 
@@ -167,7 +167,10 @@ WidgetActions.createWindow("dtinstaller")
 if len(sys.argv) > 1:
 	checkArgs.checkArgsStart()
 	if debug == 1:
-		callGUI()
+		if clui == 1:
+			callCLUI()
+		else:
+			callGUI()
 	if failsafe == 1:
 		callGUI()
 	if clui == 1:
