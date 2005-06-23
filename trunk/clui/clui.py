@@ -64,7 +64,7 @@ def mainCLUI():
 
         resp = raw_input("What keyboard lay-out do you want to use?\n>")
         print
-        print "You are using %s keyboard lay-out\n" %resp
+        print "You are using the keyboard layout: %s\n" %resp
         lay = raw_input("Is this ok? (y/n)")
         if lay == "y":
                 print "\nThank you for using the Exigo cli installer.\n"
