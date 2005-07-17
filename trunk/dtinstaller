@@ -41,30 +41,16 @@ print
 print "Welcome to " + version.appName + " " + version.appVersion + "!"
 print "Please wait while the installation of " + version.OSName + " " + version.OSVer + " is started..."
 
-#try:
-#        args = getopt.getopt(sys.argv, "c", ["clui"])
-#except getopt.GetoptError:
-#        usage()
-#        sys.exit(1)
-
-#for arg in args:
-#        if arg in ("-c", "--clui"):
-#                print "Starting the text-based installer..."
-#                import clui
-#                clui.mainCLUI()
-#        else:
-#                print "Starting the graphical installer..."
-
 if len(sys.argv) > 1:
         if sys.argv[1]=="--clui":
                 print "Starting the text-based installer..."
                 import clui
                 clui.mainCLUI()
         else:
-               	print "Starting the graphical installer..."
+                print "Starting the graphical installer..."
                 import gui
                 gui.initGUI()
 else:
-	print "Starting the graphical installer..."
-	import gui
-	gui.initGUI()
+        print "Starting the graphical installer..."
+        import gui
+        gui.initGUI()

@@ -65,6 +65,7 @@ class WidgetActions:
 	right = xml.get_widget('right')
 	bottombox = xml.get_widget('bottombox')
 	eventbox8 = xml.get_widget('eventbox8')
+	helplabel = xml.get_widget('helpLabel')
 	widgets = xml.get_widget_prefix('')
 
 	@classmethod
@@ -86,7 +87,6 @@ class WidgetActions:
 		gtk.EventBox.modify_bg(self.bottom2, "GTK_STATE_NORMAL", black)
 		gtk.EventBox.modify_bg(self.left, "GTK_STATE_NORMAL", black)
 		gtk.EventBox.modify_bg(self.right, "GTK_STATE_NORMAL", black)
-
 		
 		## gtk event/signal checking/connecting/handling	
 	

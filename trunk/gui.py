@@ -26,22 +26,16 @@
 # STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY
 # OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
+## definitions and classes
+
 import sys
 import os
 import time
-import libs
-
-libs.fullPath()
-
-from widgets import WidgetActions
-import variables
-import colours
-
-## definitions and classes
 
 def initGUI():
         if os.getenv("DISPLAY") == None:
                 print "We must start X here"
+                sys.exit(1)
                 xorg = 0
         else:
                 print "X is running, so lets continue"
@@ -49,6 +43,14 @@ def initGUI():
 
         ## import GTK
 
+        import libs
+        
+        libs.fullPath()
+        
+        from widgets import WidgetActions
+        import variables
+        import colours
+        
         if xorg == 1:
                 import pygtk
                 import gtk
